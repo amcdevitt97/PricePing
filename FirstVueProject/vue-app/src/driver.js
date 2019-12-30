@@ -8,22 +8,53 @@ export default {
         var placesKey = config.placesKey;
         var query = data.location.value.replace(/ /g, '+')+'+nail+salons';
         
-        var response = await axios.get("https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/xml?query="+query+"&key="+placesKey,  JSON.stringify(data));
-        var xmlString = response.data;
+        var response = await axios.get("https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/xml?query="+query+"&key="+placesKey, { 'headers': { 'X-Requested-With': 'XMLHttpRequest'} }, JSON.stringify(data));
+		var xmlString = response.data;
         var parser = new DOMParser();
         var xml = parser.parseFromString(xmlString, "text/xml");
         //console.log(xml);
         var jsonResponse = xmlToJson(xml);
         // TODO: store all names and phone numbers in an array
-        var placeIDs;
+        var placeIDs = [];
+        var names;
+        var phoneNumbers;
+        for(var i=0; i<20; i++){
+           placeIDs[i] = jsonResponse.PlaceSearchResponse.result[i].place_id['#text'];
+           //console.log(jsonResponse.PlaceSearchResponse.result[i]);
+
+        }
+        return placeIDs;
+	},
+
+	phoneNums: async function(placesArray) {
+		var phoneNumberArray = [];
+        if(placesArray.length!=0){
+
+			for(var i=0; i< placesArray.length; i++){
+				var placesKey = config.placesKey;
+				var response = await axios.get("https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id="+placesArray[i]+"&fields=name,rating,formatted_phone_number&key="+placesKey, { 'headers': { 'X-Requested-With': 'XMLHttpRequest'} });
+				//console.log(response.data.result);
+				phoneNumberArray[i] = response.data.result.formatted_phone_number;
+				
+			}
+			return phoneNumberArray;
+		}
+		else{
+			console.log("not found");
+			return 0;
+		}
+		
+        
+        // TODO: store all names and phone numbers in an array
+        /*var placeIDs = [];
         var names;
         var phoneNumbers;
         for(var i=0; i<20; i++){
            placeIDs[i] = jsonResponse.PlaceSearchResponse.result[i].place_id['#text'];
            console.log(jsonResponse.PlaceSearchResponse.result[i]);
 
-        }
-        return Promise(response);
+        }*/
+        
     },
 
 }

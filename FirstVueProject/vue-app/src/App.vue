@@ -30,15 +30,34 @@
             hasError: null
           }
         },
+        phoneNumbers: [],
         generalErrorMessage: "Sorry! Couldn't find this city. Did you type it in correctly?"
       };
     },
+    
     methods: {
-      async submit() {
-        var result = await driver.search(this.data);
-        //console.log(result);
+      
+      submit() {
+
+        return driver.search(this.data)
+        .then(response => {
+          return driver.phoneNums(response)
+            .then(list => {
+              this.phoneNumbers = list;
+              console.log(list);
+              // TODO, send this list of phone numbers to a function that calls all the numbers in it
+              
+              })
+            .catch(error => {
+            throw error;
+        })
+        })
+        .catch(error => {
+          throw error;
+        })
       },
     },
+    
   }
 </script>
 
