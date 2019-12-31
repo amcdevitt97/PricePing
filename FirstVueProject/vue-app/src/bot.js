@@ -1,5 +1,7 @@
-var accountSid = require('./config/config.js').accountSid;
-var authToken = require('./config/config.js').authToken;
+import config from './config.js';
+
+var accountSid = config.accountSid;
+var authToken = config.authToken;
 
 /*console.log(accountSid + "   " + authToken);
 const client = require('twilio')(accountSid, authToken);

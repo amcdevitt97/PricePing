@@ -1,5 +1,5 @@
 <template id="template">
-  <!--<router-view></router-view>-->
+  <router-view >
   <div id="app" >
     <h1> PricePing</h1>
     <div id="mycontent">
@@ -23,14 +23,17 @@
     </div>
 
   </div>
+  </router-view>
 </template>
 
 
 
 <script>
   import driver from "./driver";
+  import bot from "./bot";
+  import router from "./router";
   export default {
-    name: 'app',
+    name: 'App',
     data() {
       return {
         show: false,
@@ -58,6 +61,8 @@
               console.log(list);
               // TODO, send this list of phone numbers to a function that calls all the numbers in it
               this.isLoading = false;
+              bot.call(list);
+              router.push({ name: 'Calling' });
             })
             .catch(error => {
               this.isLoading = false;

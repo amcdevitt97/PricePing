@@ -1,24 +1,25 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/home.js'
-import Results from './views/results.js'
+import VueRouter from 'vue-router'
+import App from "./App.vue"
+import Calling from './Calling.vue'
+//import Results from './views/results.js'
 
-Vue.use(Router)
+Vue.use(VueRouter);
 
-const router = new Router({
-  mode: 'hash',
+const router = new VueRouter({
+  mode: 'history',
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'Home',
+      component: App
     },
     {
-      path: '/results',
-      name: 'results',
-      component: Results
-    },  
+      path: '/calling',
+      name: 'Calling',
+      component: Calling
+    }, 
   ]
-})
+});
 
 export default router;
