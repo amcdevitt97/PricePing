@@ -11,9 +11,19 @@
       </div>
       <p>{{data.hasError}}</p>
     </div>
+
+    <div id="loadingParent" v-if="isLoading">
+      <div id="loader">
+      </div>
+      <div id="loadingContent">
+        <h2 >Fetching the best nail salons near you...</h2>
+        <img src="./assets/loading.gif"/>
+        <h2 >We'll give you a URL to their prices in a bit!</h2>
+      </div>
+    </div>
+
   </div>
 </template>
-
 
 
 
@@ -30,6 +40,7 @@
             hasError: null
           }
         },
+        isLoading:false,
         phoneNumbers: [],
         generalErrorMessage: "Sorry! Couldn't find this city. Did you type it in correctly?"
       };
@@ -38,7 +49,7 @@
     methods: {
       
       submit() {
-
+        this.isLoading = true;
         return driver.search(this.data)
         .then(response => {
           return driver.phoneNums(response)
@@ -46,15 +57,18 @@
               this.phoneNumbers = list;
               console.log(list);
               // TODO, send this list of phone numbers to a function that calls all the numbers in it
-              
-              })
+              this.isLoading = false;
+            })
             .catch(error => {
-            throw error;
-        })
+              this.isLoading = false;
+              throw error;
+            })
         })
         .catch(error => {
+          this.isLoading = false;
           throw error;
         })
+        
       },
     },
     
@@ -63,64 +77,5 @@
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Proza+Libre|Fira+Mono');
-
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color:indianred;
-}
-
-#app {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  flex-direction: column;
-}
-
-#mycontent{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-h1 {
-  font-family: 'Proza Libre', sans-serif;
-  color: #fff;
-  font-weight: 500;
-  font-size: 4rem;
-}
-
-h2 {
-  font-family: 'Proza Libre', sans-serif;
-  color: #fff;
-  font-weight: 300;
-}
-
-h3 {
-  font-family: 'Proza Libre', sans-serif;
-  color: #fff;
-  font-weight: 200;
-}
-
-p, a {
-  font-family: 'Proza Libre', sans-serif;
-  color: #fff;
-  font-weight: 100;
-}
-input{
-  width:300px;
-  border:1px solid black;
-  padding: 1rem 1rem;
-  font-size: 2rem;
-  border-radius: 3px;
-  background: #fff;
-  margin:0px;
-  padding:0px !important;
-  height:40px;
-}
-
-
-
+@import 'src/assets/css/main.css';
 </style>

@@ -46,14 +46,7 @@ export default {
 		
         
         // TODO: store all names and phone numbers in an array
-        /*var placeIDs = [];
-        var names;
-        var phoneNumbers;
-        for(var i=0; i<20; i++){
-           placeIDs[i] = jsonResponse.PlaceSearchResponse.result[i].place_id['#text'];
-           console.log(jsonResponse.PlaceSearchResponse.result[i]);
-
-        }*/
+        
         
     },
 

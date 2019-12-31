@@ -1,0 +1,85 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color:indianred;
+  }
+  
+  #app {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  #mycontent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  h1 {
+    font-family: 'Proza Libre', sans-serif;
+    color: #fff;
+    font-weight: 500;
+    font-size: 4rem;
+  }
+  
+  h2 {
+    font-family: 'Proza Libre', sans-serif;
+    color: #fff;
+    font-weight: 300;
+  }
+  
+  h3 {
+    font-family: 'Proza Libre', sans-serif;
+    color: #fff;
+    font-weight: 200;
+  }
+  
+  p, a {
+    font-family: 'Proza Libre', sans-serif;
+    color: #fff;
+    font-weight: 100;
+  }
+  input{
+    width:300px;
+    border:1px solid black;
+    padding: 1rem 1rem;
+    font-size: 2rem;
+    border-radius: 3px;
+    background: #fff;
+    margin:0px;
+    padding:0px !important;
+    height:40px;
+  }
+  
+  #loadingParent{
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width:100%;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  #loader{
+    height: 100%;
+    width:100%;
+    background-color:black;
+    opacity: .7;
+  }
+  
+  #loadingContent{
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width:100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
