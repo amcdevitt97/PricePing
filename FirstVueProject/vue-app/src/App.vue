@@ -17,7 +17,7 @@
       </div>
       <div id="loadingContent">
         <h2 >Fetching the best nail salons near you...</h2>
-        <img src="./assets/loading.gif"/>
+        <img src="./assets/images/loading.gif"/>
         <h2 >We'll give you a URL to their prices in a bit!</h2>
       </div>
     </div>
@@ -77,5 +77,5 @@
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Proza+Libre|Fira+Mono');
-@import 'src/assets/css/main.css';
+@import 'assets/css/main.css';
 </style>
