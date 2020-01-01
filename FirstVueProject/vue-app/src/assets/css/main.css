@@ -83,3 +83,9 @@ html, body {
     justify-content: center;
     flex-direction: column;
   }
+
+  #calling{
+    width:60%;
+    justify-content: center;
+    text-align: center;
+  }

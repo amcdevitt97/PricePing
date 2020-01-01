@@ -1,25 +1,18 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import App from "./App.vue"
-import Calling from './Calling.vue'
-//import Results from './views/results.js'
+import Router from 'vue-router'
+import App from './App.vue'
 
-Vue.use(VueRouter);
+Vue.use(Router)
 
-const router = new VueRouter({
-  mode: 'history',
+const router = new Router({
+  mode: 'hash',
   routes: [
     {
       path: '/',
-      name: 'Home',
+      name: 'home',
       component: App
     },
-    {
-      path: '/calling',
-      name: 'Calling',
-      component: Calling
-    }, 
   ]
-});
+})
 
 export default router;
