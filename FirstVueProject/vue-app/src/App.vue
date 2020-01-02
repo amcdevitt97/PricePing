@@ -1,5 +1,4 @@
 <template id="template">
-  <router-view >
   <div id="app" >
     <h1> PricePing</h1>
 
@@ -14,11 +13,10 @@
     </div>
 
     <Loader v-if="isLoading" />
-    <Calling v-if="isCalling"/>
+    <Calling :cityName="data.location.value" v-if="isCalling"/>
 
 
   </div>
-  </router-view>
 </template>
 
 

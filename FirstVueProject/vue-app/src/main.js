@@ -1,8 +1,28 @@
-import Vue from 'vue'
-import App from './App.vue'
+// main.js
 
-Vue.config.productionTip = false
+import Vue from 'vue/dist/vue.js';
+import VueRouter from 'vue-router';
+
+Vue.use(VueRouter);
+
+import App from './App.vue';
+import Results from './components/Results.vue';
+
+const router = new VueRouter({
+  mode: 'history',
+  base: __dirname,
+  routes: [
+    { path: '/', name: 'Home', component: App },
+    { path: '/results/:cityName',  name: 'Results', component: Results }
+  ]
+});
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  router,
+  template: `
+    <div>
+      
+      <router-view class="view"></router-view>
+    </div>
+  `
+}).$mount('#app');

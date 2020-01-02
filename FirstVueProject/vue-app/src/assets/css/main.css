@@ -21,26 +21,26 @@ html, body {
   
   h1 {
     font-family: 'Proza Libre', sans-serif;
-    color: #fff;
+    color: #fff0ed;
     font-weight: 500;
     font-size: 4rem;
   }
   
   h2 {
     font-family: 'Proza Libre', sans-serif;
-    color: #fff;
+    color: #fff0ed;
     font-weight: 300;
   }
   
   h3 {
     font-family: 'Proza Libre', sans-serif;
-    color: #fff;
+    color: #fff0ed;
     font-weight: 200;
   }
   
   p, a {
     font-family: 'Proza Libre', sans-serif;
-    color: #fff;
+    color: #fff0ed;
     font-weight: 100;
   }
   input{
@@ -88,4 +88,45 @@ html, body {
     width:60%;
     justify-content: center;
     text-align: center;
+  }
+
+  #results{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 60%;
+    margin:auto;
+  }
+
+  table, th, td{
+    border-collapse: collapse;
+    border: 5px solid #fff0ed;
+    font-family: 'Proza Libre', sans-serif;
+    color: #fff0ed;
+  }
+
+  table{
+    margin-top: 5%;
+    width:100%;
+    background-color: #9e4848;
+    box-shadow: 7px 9px 13px #864040;
+  }
+
+  th{
+    font-size: 27px;
+    font-weight: bold; 
+    height:75px;
+  }
+
+  td {
+    width: 35%;
+    height: 45px;
+    font-size: 18px;
+    font-weight: normal;
+  }
+  td+td {
+    width: auto;
+    height: auto;
   }
