@@ -3,10 +3,11 @@ import config from './config';
 
 export default {
     search: async function(data) {
-        
-
+		
+		
+		var zipCode = data;
         var placesKey = config.placesKey;
-        var query = data.location.value.replace(/ /g, '+')+'+nail+salons';
+        var query = zipCode.replace(/ /g, '+')+'+nail+salons';
         
         var response = await axios.get("https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/xml?query="+query+"&key="+placesKey, { 'headers': { 'X-Requested-With': 'XMLHttpRequest'} }, JSON.stringify(data));
 		var xmlString = response.data;
@@ -50,6 +51,32 @@ export default {
         
     },
 
+
+	findUSCity: async function(zipCode) {
+		var response = await axios.get("https://cors-anywhere.herokuapp.com/https://www.zipcodeapi.com/rest/r5gWDlTNjPSGXpsRxxAVstSqVOHZYSuwK8UsK2bV77SL6oaJzADtrfleTjv6D9jK/info.json/"+zipCode+"/degrees");
+		console.log(response);
+		if(response.data.city != 'undefined'){
+			var cityState = response.data.city +', '+ response.data.state;
+			
+			return cityState;
+		} 
+		else{
+			return 0;
+		}
+	},
+	
+	findUKCity: async function(zipCode) {
+		var response = await axios.get("https://cors-anywhere.herokuapp.com/api.postcodes.io/postcodes?q="+zipCode);
+		console.log(response);
+		if(response.data.city != 'undefined'){
+			var cityCountry = response.data.result[0].parish +', '+ response.data.result[0].country;
+			
+			return cityCountry;
+		} 
+		else{
+			return 0;
+		}
+    },
 }
 
 
@@ -92,3 +119,4 @@ function xmlToJson(xml) {
 	}
 	return obj;
 };
+

@@ -1,6 +1,6 @@
 <template id="template">
     <div id="calling">
-      <h2>Getting your prices for {{cityName}} now! Check back at <router-link :to="{name: 'Results', params: {cityName: cityName }}" class="nav-link" >this link</router-link> in about an hour for the latest prices.</h2>
+      <h2>Getting your prices for {{cityName}} now! Check back at <router-link :to="{name: 'Results', params: {cityName: cityName, zipCode: zipCode }}" class="nav-link" >this link</router-link> in about an hour for the latest prices.</h2>
     </div>
 </template>
 
@@ -10,7 +10,8 @@
   export default {
     name: 'Calling',
     props: {
-      cityName: String
+      cityName: String,
+      zipCode: String,
     },
     data() {
       return {

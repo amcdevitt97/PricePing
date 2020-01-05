@@ -27,7 +27,8 @@
   export default {
     name: 'Results',
     props: {
-      cityName: String
+      cityName: String,
+      zipCode: String,
     },
     data() {
       return {
